@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Module02Exercise01.View.EmployeePage"
+             Title="EmployeePage">
+    <VerticalStackLayout>
+
+        <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="10" HasShadow="true" WidthRequest="500">
+            <ListView ItemsSource="{Binding Employees}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Main content, centered horizontally -->
+                                <StackLayout Grid.Column="0" Spacing="2" HorizontalOptions="CenterAndExpand">
+                                    <!-- Employee Name or Info -->
+                                    <Label Text="{Binding EmployeeInfo}" 
+                                   FontSize="16" 
+                                   FontAttributes="Bold"
+                                   TextColor="white"
+                                   HorizontalOptions="Center" />
+
+                                    <!-- Employee Status -->
+                                    <Label Text="{Binding IsActiveString}" 
+                                   FontSize="14" 
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center" />
+                                </StackLayout>
+
+                            </Grid>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </Frame>
+
+        <Button Text="Load Current Manager"
+                Command="{Binding LoadEmployeeDataCommand}" 
+                    WidthRequest="500"/>
+        <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="10" HasShadow="true" WidthRequest="500">
+            <Label Text="{Binding FullName}" FontSize="20" HorizontalOptions="Center"/>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>
